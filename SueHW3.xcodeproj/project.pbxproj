@@ -61,8 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				230A2D5019D481E900D0C944 /* main.cpp */,
-				230A2D5719D4821400D0C944 /* BigInteger.cpp */,
 				230A2D5819D4821400D0C944 /* BigInteger.h */,
+				230A2D5719D4821400D0C944 /* BigInteger.cpp */,
 			);
 			path = SueHW3;
 			sourceTree = "<group>";
@@ -238,6 +238,7 @@
 				230A2D5619D481E900D0C944 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
