@@ -44,11 +44,8 @@ void testCaseTwo(){
     //2.1 Add two numbers
     additionTestCase("123","321","444");
     
-    
     //2.2 add two numbers that carry over
     additionTestCase("1678","1543","3221");
-    
-    
     
     //2.3 add two numbers of differing length
     additionTestCase("167832","1543","169375");
