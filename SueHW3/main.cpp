@@ -23,24 +23,60 @@ void testCaseOne(){
     
 }
 
+void additionTestCase(string firstNum, string secondNum, string expectedResult){
+    
+    cout << "Testing Addition: " << firstNum << " + " << secondNum << endl;
+    cout << "Expected Result: " << expectedResult << endl;
+    
+    BigInteger* myBigNum = new BigInteger(firstNum);
+    string  myNum = myBigNum->add(secondNum);
+
+    
+    cout << "Actual Result: " <<  myNum << endl;
+}
+
 
 //Test 2:
 // Add two numbers
 void testCaseTwo(){
     
-    BigInteger* myBigNum = new BigInteger("123");
-    myBigNum->print();
-    string  myNum = myBigNum->add("321");
-    cout << myNum;
+    
+    //2.1 Add two numbers
+    additionTestCase("123","321","444");
+    
+    
+    //2.2 add two numbers that carry over
+    additionTestCase("1678","1543","3221");
+    
+    
+    
+    //2.3 add two numbers of differing length
+    additionTestCase("167832","1543","169375");
+    
+    /*
+     BigInteger* myNextBigNum3 = new BigInteger("1678");
+     myNextBigNum3->print();
+     myNum = myNextBigNum3->add("154387");
+     cout << myNum << endl;
+     
+     */
     
 }
+
+void testClassFunctions(){
+    BigInteger* myNum = new BigInteger("123");
+    myNum->runTests();
+}
+
 
 
 int main(int argc, const char * argv[])
 {
     std::cout << "Hello, World!\n";
     
+    testClassFunctions();
     testCaseOne();
+    testCaseTwo();
     
     
     /*

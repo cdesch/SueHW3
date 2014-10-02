@@ -29,7 +29,9 @@ private:
     vector <int> digits;
     //Private Member Functions//
     int convertCharToInt(char c);
+    char convertIntToChar(int i);
     vector <int> convertStringToVector(string ns);
+    string convertVectorToString(vector <int> myVector);
     
 public:
     BigInteger(string ns); //Constructor with parameters
@@ -43,12 +45,16 @@ public:
     void print();
     int getDigit(int index);
     string add(string number);
-    
+    vector <int> reverseVector(vector<int> digits);
     
     //Setters//
     
     //Getters//
     long getSize();
+    
+    //Tests//
+    void runTests();
+    void testConvertVectorToString();
     
     
 };

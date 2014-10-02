@@ -12,36 +12,55 @@
 
 //Constructor with parameters
 BigInteger::BigInteger(string ns){
-    for(int i=0; i < ns.size(); i++){
-        // cout << ns[i] << endl;
-        char myDigit = ns[i];
-        int myTempInt = convertCharToInt(myDigit);
-        //cout << myDigit <<"-" << myTempInt << endl;
-        digits.push_back(myTempInt);
-    }
+    digits = convertStringToVector(ns);
 }
 
 //Deconstructor
 BigInteger::~BigInteger(){
 }
 
-//My Simple char to int converter via ASCII indexs
+//Simple char to int converter via ASCII indexs
 int BigInteger::convertCharToInt(char c){
     int myTempInt = (int)c;
     if(myTempInt < 48 || myTempInt > 57) return -1; //Error checking
     return myTempInt - 48;
 }
 
+
+//Simple int to char converter via ASCII indexes
+char BigInteger::convertIntToChar(int i){
+    char c;
+    c = (char)i;
+    return c + 48;
+}
+
+//Description: This converts a string into a vector. It converts all chars to integers in the process.
 vector <int> BigInteger::convertStringToVector(string ns){
     vector <int> myVector;
-    myVector = atoi(ns.c_str());
-    return ns.push_back(myVector());
+    for(int i=0; i < ns.size(); i++){
+        char myDigit = ns[i];
+        int myTempInt = convertCharToInt(myDigit);
+        myVector.push_back(myTempInt); //Pushes myTempInt into the vector named myVector
+    }
+    return myVector;
+}
+
+//Description: This converts a vector into a string.  It converts all integers to chars in the process.
+string BigInteger::convertVectorToString(vector <int> myVector){
+    string ns;
+    for(int i=0; i < myVector.size(); i++){
+        int myChar = myVector[i];
+        char myTempChar = convertIntToChar(myChar);
+        ns.push_back(myTempChar);
+    }
+    return ns;
 }
 
 
-vector <BigInteger> reverseVector(vector<BigInteger> digits){
-    vector <BigInteger> reverseVector;
-    for (int j = int(digits.size() - 1); j >= 0; j--){
+//Description: Reverses the digits in the vector.
+vector <int> BigInteger::reverseVector(vector<int> digits){
+    vector <int> reverseVector;
+    for (int j = (int)(digits.size() - 1); j >= 0; j--){
         reverseVector.push_back(digits[j]);
     }
     return reverseVector;
@@ -75,23 +94,35 @@ int BigInteger::getDigit(int index){  //Returns digit of BigInteger at index, ac
 
 string BigInteger::add(string number){
     
-    //vector <int> whatever = convertStringToVector(number);
     vector <int> numVector = convertStringToVector(number);
+    
+    //Add numVector and Digits together to by each element to get a result.
     int carry=0;
-    for(int i = digits.size(); i >= 0; i--){
-        int sum = number[i] + digits[i] + carry;
-        if(sum >= 10){
-            carry = (sum/10)%10;
-            sum=sum-10;
-            number[i]=sum;
+    int index = int(digits.size() - 1);
+    if(digits.size() > numVector.size()) index = int(numVector.size()-1);
+    cout << "Index " << index << endl;
+    for(int i = index; i >= 0; i--){
+        int sumNum = numVector[i] + digits[i] + carry;
+        if(sumNum >= 10){
+            carry = (sumNum/10) % 10;
+            sumNum=sumNum-10;
         }
+        else{
+            carry = 0;
+        }
+        cout << "sumNum " << sumNum <<endl;
+        cout << "carry is " << carry << endl;
+        numVector[i]=sumNum;
     }
-    cout << "number " << number << endl;
     
     //For Debugging -- Print the vectors.
+    for (int i =0; i < numVector.size(); i++){
+        cout << numVector[i];
+    }
+    cout << endl;
     
     //convert the final vector to a string and return.
-    
+    number = convertVectorToString(numVector);
     return number;
 }
 
@@ -99,6 +130,28 @@ string BigInteger::add(string number){
 //Getters
 long BigInteger::getSize(){
     return digits.size();
+}
+
+
+//Tests//
+
+void BigInteger::runTests(){
+    cout << "Running Class Tests" << endl;
+    testConvertVectorToString();
+}
+void BigInteger::testConvertVectorToString(){
+    cout << "**Running " << __PRETTY_FUNCTION__ << endl;
+    
+    vector <int> myVector;
+    myVector.push_back(1);
+    myVector.push_back(2);
+    myVector.push_back(3);
+    
+    string myString = convertVectorToString(myVector);
+    
+    cout << "Converted String: " << myString << endl;
+    
+    cout << "**Ended " << __PRETTY_FUNCTION__ << endl;
 }
 
 /*
