@@ -18,7 +18,6 @@
 
 using namespace std;
 
-
 //COPY FROM HERE //
 //************************
 //    Class BigInteger
@@ -32,8 +31,11 @@ private:
     char convertIntToChar(int i);
     vector <int> convertStringToVector(string ns);
     string convertVectorToString(vector <int> myVector);
+    bool isGreaterThan(string number);
     
 public:
+
+    BigInteger(); //Default Constructor
     BigInteger(string ns); //Constructor with parameters
     ~BigInteger(); //Deconstructor
     
@@ -45,6 +47,10 @@ public:
     void print();
     int getDigit(int index);
     string add(string number);
+    string subtract(string number);
+    string multiply(string number);
+    string divide(string number);
+    void increment();
     vector <int> reverseVector(vector<int> digits);
     
     //Setters//
@@ -55,8 +61,6 @@ public:
     //Tests//
     void runTests();
     void testConvertVectorToString();
-    
-    
 };
 
 //COPY TO HERE //

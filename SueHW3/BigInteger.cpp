@@ -10,9 +10,15 @@
 
 //COPY FROM HERE //
 
+//Default Constructor
+BigInteger::BigInteger(){
+    //Empty
+}
+
 //Constructor with parameters
 BigInteger::BigInteger(string ns){
     digits = convertStringToVector(ns);
+    //TODO: ->
 }
 
 //Deconstructor
@@ -57,6 +63,35 @@ string BigInteger::convertVectorToString(vector <int> myVector){
 }
 
 
+//TODO: Description
+//Returns true if 'number' is greater than digits
+//returns false if digits is greater than 'number'
+bool BigInteger::isGreaterThan(string number){
+    
+    
+    //TODO: Implement
+    bool result;
+    
+    //YOUR CODE GOES HERE to SET RESULT AS TRUE OR FALSE
+    
+    
+    //If one array has greater size -- If Digits is longer 'number' return false
+    //if else -If Digits is shorter 'number' return true
+    //else -  the vectors are of equal length.
+        //Loop the numbers
+        //[6,7,4]
+        //[6,4,2]
+        //first past -  compare 6 to 6 -
+                //if statement- if they are equal, compare next
+                //if  Digits is greater than 'number' return false
+                //If Digits is less 'number' return true
+    
+    
+    return result;
+    
+}
+
+
 //Description: Reverses the digits in the vector.
 vector <int> BigInteger::reverseVector(vector<int> digits){
     vector <int> reverseVector;
@@ -92,39 +127,151 @@ int BigInteger::getDigit(int index){  //Returns digit of BigInteger at index, ac
     return digits[index];
 }
 
+//TODO: Description
 string BigInteger::add(string number){
     
     vector <int> numVector = convertStringToVector(number);
     
     //Add numVector and Digits together to by each element to get a result.
     int carry=0;
-    int index = int(digits.size() - 1);
-    if(digits.size() > numVector.size()) index = int(numVector.size()-1);
-    cout << "Index " << index << endl;
-    for(int i = index; i >= 0; i--){
-        int sumNum = numVector[i] + digits[i] + carry;
-        if(sumNum >= 10){
-            carry = (sumNum/10) % 10;
-            sumNum=sumNum-10;
+    int newIndex, index;
+    int sumNum=0;
+    index = int(digits.size()-1);
+    newIndex = abs(int(digits.size()-numVector.size()));
+    
+    if(digits.size() <= numVector.size()){
+        index = int(numVector.size()-1);
+        for(int i = index; i >= newIndex; i--){
+            sumNum = numVector[i] + digits[i-newIndex] + carry;
+            if(sumNum >= 10){
+                carry = (sumNum/10) % 10;
+                sumNum=sumNum-10;
+            }
+            else{
+                carry = 0;
+            }
+            numVector[i]=sumNum;
         }
-        else{
-            carry = 0;
-        }
-        cout << "sumNum " << sumNum <<endl;
-        cout << "carry is " << carry << endl;
-        numVector[i]=sumNum;
+        if(carry==1) numVector[newIndex-1] = numVector[newIndex-1]+1;
+        number=convertVectorToString(numVector);
     }
     
     //For Debugging -- Print the vectors.
-    for (int i =0; i < numVector.size(); i++){
-        cout << numVector[i];
+    /*for (int i =0; i < digits.size(); i++){
+     cout << numVector[i];
+     }
+     */
+    
+    if(digits.size() > numVector.size()){
+        for(int i = int(digits.size()-1); i >= newIndex; i--){
+            sumNum = numVector[i-newIndex] + digits[i] + carry;
+            if(sumNum >= 10){
+                carry = (sumNum/10) % 10;
+                sumNum=sumNum-10;
+            }
+            else{
+                carry = 0;
+            }
+            digits[i]=sumNum;
+        }
+        if(carry==1) digits[newIndex-1] = digits[newIndex-1]+1;
+        number=convertVectorToString(digits);
     }
-    cout << endl;
+    
+    //For Debugging -- Print the vectors.
+    /*for (int i =0; i < digits.size(); i++){
+     cout << digits[i];
+     }
+     cout << endl;
+     */
     
     //convert the final vector to a string and return.
-    number = convertVectorToString(numVector);
     return number;
 }
+
+//TODO: Description
+string BigInteger::subtract(string number){
+    
+    vector <int> numVector = convertStringToVector(number);
+    
+    //Subtract numVector and Digits by each element to get a result.
+    
+    int maxindex=0;
+    int index=0;
+    int diffNum=0;
+    int flag=0;
+    
+    if(digits.size() < numVector.size()){
+        index = int(numVector.size()-1);
+        maxindex = int(numVector.size() - digits.size());
+        flag=1;
+    }
+    if(digits.size() > numVector.size()){
+        index = int(digits.size()-1);
+        maxindex = int(digits.size() - numVector.size());
+    }
+    if(digits.size() == numVector.size()){
+        index = int(digits.size()-1);
+        maxindex = int(digits.size() - numVector.size());
+        //Do a do loop and add then compare
+    }
+    
+    //TODO: do the comparision, return error if negative
+    //if(isGreaterThan(number)) return "Error, negative result pending."; //Return error
+    
+    if(digits[maxindex] < numVector[maxindex]) flag=1;
+    
+    cout << "INDEX = " << index << " maxindex = " <<maxindex << endl;
+    
+    for(int i = index; i >= maxindex;){
+        cout << " digits " << digits[i] << "numVector= "<< numVector[i] << endl;
+        if(digits[i] < numVector[i]){
+            digits[i] = digits[i] + 10;
+            digits[i-1] = digits[i - 1] - 1;
+        }
+        diffNum = int(digits[i] - numVector[i]);
+        digits[i] = diffNum;
+        cout << "DIFFNUM " << diffNum << endl;
+        i=i-1;
+    }
+    number = convertVectorToString(digits);
+    //}
+    
+    //For Debugging -- Print the vectors.
+    /*for (int i =0; i < digits.size(); i++){
+     cout << numVector[i];
+     }
+     */
+    
+    //convert the final vector to a string and return.
+    return number;
+}
+
+
+//TODO: Description
+string BigInteger::multiply(string number){
+    
+    //convert the final vector to a string and return.
+
+    //TODO: implement
+    return number;
+    
+}
+//TODO: Description
+string BigInteger:: divide(string number){
+    //convert the final vector to a string and return.
+    
+    //TODO: implement
+    return number;
+}
+//TODO: Description
+void BigInteger:: increment(){
+    
+    //TODO: implement
+    //string myNewNum = add("1");
+    //digits = convertStringToVector(myNewNum);
+}
+
 
 
 //Getters
@@ -154,57 +301,3 @@ void BigInteger::testConvertVectorToString(){
     cout << "**Ended " << __PRETTY_FUNCTION__ << endl;
 }
 
-/*
- bigInteger* addAny(bigInteger* a, bigInteger* b){  //Return a+b, with regard to signs
- return 0;
- }
- bigInteger* subtractAny(bigInteger* a, bigInteger* b){  //Return a-b, with regard to signs
- return 0;
- }
- bigInteger* multiplyAny(bigInteger* a, bigInteger* b){  //Return a*b, with regard to signs
- return 0;
- }
- bigInteger* divideAny(bigInteger* a, bigInteger* b){  //Return a/b, with regard to signs
- return 0;
- }
- bigInteger* factorialAny(bigInteger* a, bigInteger* b){  //Return a!, with regard to signs
- return 0;
- }
- bigInteger* incrementAny(bigInteger* a, bigInteger* b){  //Return a+increment, with regard to signs
- return 0;
- }
- */
-
-/*
- void BigInteger::pushBack(string number){ //Adding string input to next free spot in digits array
- if(number<'0' || number>'9'){   //If string number isn't a single digit between 0 and 9.
- return;
- }
- if(size>=capSize)
- resize();
- digits[size] = number;
- size++;
- }
- void BigInteger::pushBack(int number){ //Adding int to next free spot in digits array
- if(number>=10){       //More than two digits
- cout << "\n ERROR in pushBack because number istoo big to push back.\n";
- return;
- }
- if(number<0){ //if a negative number
- cout << "\n ERROR in pushBack since push back a negative number: " << number << ".\n";
- return;
- }
- if(number%1!=0){ //if not an int
- cout << "\n ERROR in pushBack since unable to push back a double.\n";
- return;
- }
- 
- if(size>=capSize){ //Digits capSize needs to increase in order to hold more
- resize();
- }
- if(number<=9){ //Checking valid digit
- digits[size] = '0' + number;
- }
- size++;
- }
- */

@@ -26,13 +26,23 @@ void testCaseOne(){
 void additionTestCase(string firstNum, string secondNum, string expectedResult){
     
     cout << "Testing Addition: " << firstNum << " + " << secondNum << endl;
-    cout << "Expected Result: " << expectedResult << endl;
+    cout << "Expected Result: \t" << expectedResult << endl;
     
     BigInteger* myBigNum = new BigInteger(firstNum);
     string  myNum = myBigNum->add(secondNum);
-
     
-    cout << "Actual Result: " <<  myNum << endl;
+    cout << "Actual Result: \t\t" <<  myNum << endl <<endl;
+}
+
+void subtractionTestCase(string firstNum, string secondNum, string expectedResult){
+    
+    cout << "Testing Subtraction: " << firstNum << " - " << secondNum << endl;
+    cout << "Expected Result: \t" << expectedResult << endl;
+    
+    BigInteger* myBigNum = new BigInteger(firstNum);
+    string  myNum = myBigNum->subtract(secondNum);
+    
+    cout << "Actual Result: \t\t" <<  myNum << endl <<endl;
 }
 
 
@@ -50,97 +60,57 @@ void testCaseTwo(){
     //2.3 add two numbers of differing length
     additionTestCase("167832","1543","169375");
     
-    /*
-     BigInteger* myNextBigNum3 = new BigInteger("1678");
-     myNextBigNum3->print();
-     myNum = myNextBigNum3->add("154387");
-     cout << myNum << endl;
-     
-     */
+    //2.4 add two numbers of differeing lengths
+    additionTestCase("1678","154387","156065");
     
+    //2.5 add two long numbers of differeing lengths
+    additionTestCase("738492738409274019284726474038262019362543059573630183749505846264849374","9875037634645930237595736253009785730737","738492738409274019284726474038271894400177705503867779485758856050580111");
+    
+    //2.6 add two long numbers of differeing lengths
+    additionTestCase("9875037634645930237595736253009785730737","738492738409274019284726474038262019362543059573630183749505846264849374","738492738409274019284726474038271894400177705503867779485758856050580111");
 }
+
+//Test 3:
+//Subtract two numbers
+void testCaseThree(){
+    
+    //3.1 Subtract two numbers
+    subtractionTestCase("123","321","-198");
+    
+    //3.2 Subtract two numbers that carry over
+    subtractionTestCase("1678","1543","135");
+    
+    //3.3 Subtract two numbers of differing length
+    subtractionTestCase("167832","1543","166289");
+    
+    //3.4 Subtract two numbers of differeing lengths
+    subtractionTestCase("1678","154387","-152709");
+    /*
+    //3.5 Subtract two long numbers of differeing lengths
+
+    subtractionTestCase("738492738409274019284726474038262019362543059573630183749505846264849374","9875037634645930237595736253009785730737","738492738409274019284726474038252144324908413643392588013252836479118637");
+    
+    //3.6 Subtract two long numbers of differeing lengths
+    subtractionTestCase("9875037634645930237595736253009785730737","738492738409274019284726474038262019362543059573630183749505846264849374","-738492738409274019284726474038252144324908413643392588013252836479118637");
+     */
+}
+
 
 void testClassFunctions(){
     BigInteger* myNum = new BigInteger("123");
     myNum->runTests();
 }
 
-
-
 int main(int argc, const char * argv[])
 {
     std::cout << "Hello, World!\n";
     
-    testClassFunctions();
-    testCaseOne();
-    testCaseTwo();
+    //testClassFunctions();
+    //testCaseOne();
+    //testCaseTwo();
+    testCaseThree();
     
     
-    /*
-     
-     string operation, quit;
-     string firstInt, secondInt;
-     BigInteger* numOne, *numTwo, *result;
-     
-     while(true){
-     //INITIAL USER INPUT
-     cout << "**********\n Please enter First INTEGER: ";
-     cin >> firstInt;
-     cout << "\n What mathematical operation would you like to perform? (A=Addition, S=Subtration, M=Multiplication, F=Factorial, I=Increment, D=Division) ";
-     cin >> operation;
-     if(operation != "F" && operation!="f"){  //if operation desired isn't factorial, we want a second number
-     cout << "\n Please enter Second INTEGER: ";
-     cin >> secondInt;
-     numTwo = BigInteger(secondInt);
-     }
-     numOne = BigInteger(firstInt);
-     
-     //OPERATIONS
-     if(operation=="A" || operation=="a"){ //Addition
-     result = addAny(numOne,numTwo);
-     cout << "\n The SUM of " << firstInt << " and " << secondInt << " is "; result; cout << ".\n" ;
-     }
-     else if(operation=="S" || operation=="s"){ //Subtraction
-     result = subtractAny(numOne,numTwo);
-     cout << "\n The DIFFERENCE of " << firstInt << " and " << secondInt << " is "; result; cout << ".\n" ;
-     }
-     else if(operation=="M" || operation=="m"){ //Multiplication
-     result = multiplyAny(numOne,numTwo);
-     cout << "\n The PRODUCT of " << firstInt << " and " << secondInt << " is "; result; cout << ".\n" ;
-     }
-     else if(operation=="F" || operation=="f"){ //Factorial
-     result = factorialAny(numOne);
-     if(result != NULL){
-     cout << "\n The FACTORIAL of " << firstInt << " is "; result; cout << ".\n" ;
-     }
-     else
-     cout << "\n The FACTORIAL of " << firstInt << " could not be computed.\n";
-     }
-     else if(operation=="I" || operation=="i"){ //Increment
-     result = incrementAny(numOne,numTwo);
-     cout << "\n The INCREMENT of " << firstInt << " by " << secondInt << " is "; result; cout << ".\n" ;
-     }
-     else if(operation=="D" || operation=="d"){ //Division
-     result = divideAny(numOne,numTwo);
-     if(result != NULL){
-     
-     cout << "\n The DIVISION of " << firstInt << " and " << secondInt << " is "; result; cout << ".\n" ;
-     }
-     else
-     cout << "\n The DIVISION of " << firstInt << " and " << secondInt << " could not be computed.\n";
-     }
-     else {//if input isn't valid
-     cout << "\nNot a valid input. Try again.\n";
-     continue;
-     }
-     cout << "\n Would you like to quit? (Y or N) ";
-     cin >> quit;
-     
-     if(quit=="Y" || quit=="y") //To quit program
-     exit(1);
-     cout << endl;
-     }
-     */
     
     return 0;
 }
