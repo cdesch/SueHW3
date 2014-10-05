@@ -45,6 +45,18 @@ void subtractionTestCase(string firstNum, string secondNum, string expectedResul
     cout << "Actual Result: \t\t" <<  myNum << endl <<endl;
 }
 
+void multiplicationTestCase(string firstNum, string secondNum, string expectedResult){
+    
+    cout << "Testing Multiplication: " << firstNum << " * " << secondNum << endl;
+    cout << "Expected Result: \t" << expectedResult << endl;
+    
+    BigInteger* myBigNum = new BigInteger(firstNum);
+    string  myNum = myBigNum->multiply(secondNum);
+    
+    cout << "Actual Result: \t\t" <<  myNum << endl <<endl;
+}
+
+
 
 //Test 2:
 // Add two numbers
@@ -75,7 +87,7 @@ void testCaseTwo(){
 void testCaseThree(){
     
     //3.1 Subtract two numbers
-    subtractionTestCase("123","321","-198");
+    subtractionTestCase("123","321","Error");
     
     //3.2 Subtract two numbers that carry over
     subtractionTestCase("1678","1543","135");
@@ -84,17 +96,35 @@ void testCaseThree(){
     subtractionTestCase("167832","1543","166289");
     
     //3.4 Subtract two numbers of differeing lengths
-    subtractionTestCase("1678","154387","-152709");
-    /*
+    subtractionTestCase("1678","154387","Error");
+    
     //3.5 Subtract two long numbers of differeing lengths
-
+    
     subtractionTestCase("738492738409274019284726474038262019362543059573630183749505846264849374","9875037634645930237595736253009785730737","738492738409274019284726474038252144324908413643392588013252836479118637");
     
-    //3.6 Subtract two long numbers of differeing lengths
-    subtractionTestCase("9875037634645930237595736253009785730737","738492738409274019284726474038262019362543059573630183749505846264849374","-738492738409274019284726474038252144324908413643392588013252836479118637");
-     */
 }
 
+//Test 4:
+//Multiply two numbers
+void testCaseFour(){
+    
+    //4.1 Multiply two numbers
+    multiplicationTestCase("123","5","615");
+    
+    //4.2 Multiply two numbers that carry over
+    multiplicationTestCase("1678","1543","2589154");
+    
+    //4.3 Multiply two numbers of differing length
+    multiplicationTestCase("167832","1543","258964776");
+    
+    //4.4 Multiple two numbers of differeing lengths
+    multiplicationTestCase("1678","154387","Error");
+    
+    //4.5 Mul;tiply two long numbers of differeing lengths
+    
+    //multiplicationTestCase("738492738409274019284726474038262019362543059573630183749505846264849374","9875037634645930237595736253009785730737","7292643584704313025038543959653364114801893959499874158576694228326563709541268635376325546944510755161827008638");
+    
+}
 
 void testClassFunctions(){
     BigInteger* myNum = new BigInteger("123");
@@ -109,6 +139,7 @@ int main(int argc, const char * argv[])
     //testCaseOne();
     //testCaseTwo();
     testCaseThree();
+    testCaseFour();
     
     
     

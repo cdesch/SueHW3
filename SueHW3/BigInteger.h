@@ -6,6 +6,14 @@
 //  Copyright (c) 2014 KickinEspresso. All rights reserved.
 //
 
+//
+//  BigInteger.h
+//  SueHW3
+//
+//  Created by cj on 9/25/14.
+//  Copyright (c) 2014 KickinEspresso. All rights reserved.
+//
+
 //The .h file will have all the declarations for the class
 #ifndef __SueHW3__BigInteger__  //
 #define __SueHW3__BigInteger__
@@ -31,10 +39,11 @@ private:
     char convertIntToChar(int i);
     vector <int> convertStringToVector(string ns);
     string convertVectorToString(vector <int> myVector);
-    bool isGreaterThan(string number);
+    bool isGreaterThan(vector <int> numVector);
+
     
 public:
-
+    
     BigInteger(); //Default Constructor
     BigInteger(string ns); //Constructor with parameters
     ~BigInteger(); //Deconstructor
