@@ -30,7 +30,9 @@ public:
     
     //Member Functions
     void print();
-    
+    bool isGreaterThan(Digit* d);
+    bool isEqualTo(Digit* d);
+    bool isLessThan(Digit* d);
     //Setters//
     void setValue(int v);
     

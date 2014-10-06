@@ -23,29 +23,20 @@ BigInteger::BigInteger(string ns){
 
 //Deconstructor
 BigInteger::~BigInteger(){
+    
+    //Remove all of the objects in the array;
+    for (int i = 0; i < this->myDigits.size(); i++ ){
+        delete myDigits[i];
+    }
 }
 
-//Simple char to int converter via ASCII indexs
-int BigInteger::convertCharToInt(char c){
-    int myTempInt = (int)c;
-    if(myTempInt < 48 || myTempInt > 57) return -1; //Error checking
-    return myTempInt - 48;
-}
-
-
-//Simple int to char converter via ASCII indexes
-char BigInteger::convertIntToChar(int i){
-    char c;
-    c = (char)i;
-    return c + 48;
-}
 
 //Description: This converts a string into a vector. It converts all chars to integers in the process.
 vector <int> BigInteger::convertStringToVector(string ns){
     vector <int> myVector;
     for(int i=0; i < ns.size(); i++){
         char myDigit = ns[i];
-        int myTempInt = convertCharToInt(myDigit);
+        int myTempInt = utility::convertCharToInt(myDigit);
         myVector.push_back(myTempInt); //Pushes myTempInt into the vector named myVector
     }
     return myVector;
@@ -56,7 +47,7 @@ string BigInteger::convertVectorToString(vector <int> myVector){
     string ns;
     for(int i=0; i < myVector.size(); i++){
         int myChar = myVector[i];
-        char myTempChar = convertIntToChar(myChar);
+        char myTempChar = utility::convertIntToChar(myChar);
         ns.push_back(myTempChar);
     }
     return ns;
@@ -78,9 +69,6 @@ bool BigInteger::isGreaterThan(vector <int> numVector){
     //if  Digits is greater than 'number' return true
     //If Digits is less 'number' return true
     
-    
-    
-    
     if(digits.size() < numVector.size()){
         result = true;
         return result;
@@ -97,7 +85,6 @@ bool BigInteger::isGreaterThan(vector <int> numVector){
             if(digits[i] > numVector[i]){
                 result = false;
                 return result;
-                
             }else if(digits[i] < numVector[i]) {
                 cout << "i = " << i << " digits[i] " << digits[i] << " number[i] " << numVector[i] << endl;
                 cout << "GOT HERE"<< endl;
@@ -197,6 +184,9 @@ string BigInteger::add(string number){
     return number;
 }
 
+
+//void BigInteger::add(BigInteger* number){}
+
 //Subtract two numbers
 string BigInteger::subtract(string number){
     
@@ -234,6 +224,9 @@ string BigInteger::subtract(string number){
     return number;
 }
 
+
+
+//void BigInteger::subtract(BigInteger* number){}
 
 //TMultiplying two numbers and returning the resultant vector to a string
 string BigInteger::multiply(string number){
@@ -285,13 +278,20 @@ string BigInteger::multiply(string number){
     return number;
 }
 
+
+
+
+//void BigInteger::multiply(BigInteger* number){}
+
 //TODO: Description
-string BigInteger:: divide(string number){
+string BigInteger::divide(string number){
     //convert the final vector to a string and return.
     
     //TODO: implement
     return number;
 }
+
+//void BigInteger::divide(BigInteger* number){}
 
 //Increment the number by 1
 void BigInteger:: increment(){

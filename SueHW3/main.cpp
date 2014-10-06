@@ -9,11 +9,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "BigInteger.h"
 
+
+#include "BigInteger.h"
+#include "Digit.h"
+#include "Utility.hpp"
 
 using namespace std;
-
 //Test 1:
 //Store a number in BigIntger Object via String and print it.
 void testCaseOne(){

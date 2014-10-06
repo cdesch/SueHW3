@@ -30,6 +30,34 @@ void Digit::print(){
     cout << this->value << endl;
 }
 
+//TODO: Description
+bool Digit::isGreaterThan(Digit* d){
+    if(this->value > d->getValue()){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+//TODO: Description
+bool Digit::isEqualTo(Digit* d){
+    if(this->value == d->getValue()){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+//TODO: Description
+bool Digit::isLessThan(Digit* d){
+    if(this->value < d->getValue()){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
 //Setters//
 /* Name: setValue
  * Description:	sets value using the passed parameter

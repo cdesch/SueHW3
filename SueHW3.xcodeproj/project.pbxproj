@@ -10,6 +10,7 @@
 		230A2D5119D481E900D0C944 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 230A2D5019D481E900D0C944 /* main.cpp */; };
 		230A2D5919D4821400D0C944 /* BigInteger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 230A2D5719D4821400D0C944 /* BigInteger.cpp */; };
 		2389D64719E3208B00E520FB /* Digit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2389D64519E3208B00E520FB /* Digit.cpp */; };
+		2389D64D19E32E4F00E520FB /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2389D64B19E32E4F00E520FB /* Utility.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		230A2D5819D4821400D0C944 /* BigInteger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigInteger.h; sourceTree = "<group>"; };
 		2389D64519E3208B00E520FB /* Digit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Digit.cpp; sourceTree = "<group>"; };
 		2389D64619E3208B00E520FB /* Digit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Digit.h; sourceTree = "<group>"; };
+		2389D64B19E32E4F00E520FB /* Utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utility.cpp; sourceTree = "<group>"; };
+		2389D64C19E32E4F00E520FB /* Utility.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Utility.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				230A2D5719D4821400D0C944 /* BigInteger.cpp */,
 				2389D64519E3208B00E520FB /* Digit.cpp */,
 				2389D64619E3208B00E520FB /* Digit.h */,
+				2389D64B19E32E4F00E520FB /* Utility.cpp */,
+				2389D64C19E32E4F00E520FB /* Utility.hpp */,
 			);
 			path = SueHW3;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 			files = (
 				230A2D5119D481E900D0C944 /* main.cpp in Sources */,
 				230A2D5919D4821400D0C944 /* BigInteger.cpp in Sources */,
+				2389D64D19E32E4F00E520FB /* Utility.cpp in Sources */,
 				2389D64719E3208B00E520FB /* Digit.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +220,11 @@
 		230A2D5519D481E900D0C944 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include/,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -221,6 +232,11 @@
 		230A2D5619D481E900D0C944 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include/,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

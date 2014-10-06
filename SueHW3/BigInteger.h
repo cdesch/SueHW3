@@ -23,6 +23,8 @@
 #include <string>
 #include <vector>
 #include <stdlib.h>
+#include "Digit.h"
+#include "Utility.hpp"
 
 using namespace std;
 
@@ -35,9 +37,10 @@ class BigInteger{
 private:
     
     vector <int> digits;
+    vector <Digit*> myDigits;
+    
     //Private Member Functions//
-    int convertCharToInt(char c);
-    char convertIntToChar(int i);
+
     vector <int> convertStringToVector(string ns);
     string convertVectorToString(vector <int> myVector);
     bool isGreaterThan(vector <int> numVector);
@@ -56,9 +59,17 @@ public:
     int getDigit(int index);
 
     string add(string number);
+    //void add(BigInteger* number);
+    
     string subtract(string number);
+    //void subtract(BigInteger* number);
+    
     string multiply(string number);
+    //void multiply(BigInteger* number);
+    
     string divide(string number);
+    //void divide(BigInteger* number);
+    
     void increment();
     void decrement();
     vector <int> reverseVector(vector<int> digits);
