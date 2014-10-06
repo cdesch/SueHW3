@@ -10,6 +10,7 @@
 #define __SueHW3__Utility__
 
 #include <stdio.h>
+#include <iostream>
 
 namespace utility{
     void function1();

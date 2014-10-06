@@ -20,10 +20,8 @@ BigInteger::BigInteger(string ns){
     digits = convertStringToVector(ns);
     //TODO: ->
 }
-
 //Deconstructor
 BigInteger::~BigInteger(){
-    
     //Remove all of the objects in the array;
     for (int i = 0; i < this->myDigits.size(); i++ ){
         delete myDigits[i];

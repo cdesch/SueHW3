@@ -40,7 +40,6 @@ private:
     vector <Digit*> myDigits;
     
     //Private Member Functions//
-
     vector <int> convertStringToVector(string ns);
     string convertVectorToString(vector <int> myVector);
     bool isGreaterThan(vector <int> numVector);
