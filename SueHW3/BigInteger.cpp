@@ -300,7 +300,12 @@ void BigInteger:: increment(){
     return;
 }
 
-
+//decrement the number by 1
+void BigInteger:: decrement(){
+    string myNewNum = subtract("1");
+    digits = convertStringToVector(myNewNum);
+    return;
+}
 
 //Getters
 long BigInteger::getSize(){

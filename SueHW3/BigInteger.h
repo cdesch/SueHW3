@@ -33,6 +33,7 @@ using namespace std;
 
 class BigInteger{
 private:
+    
     vector <int> digits;
     //Private Member Functions//
     int convertCharToInt(char c);
@@ -41,13 +42,11 @@ private:
     string convertVectorToString(vector <int> myVector);
     bool isGreaterThan(vector <int> numVector);
 
-    
 public:
     
     BigInteger(); //Default Constructor
     BigInteger(string ns); //Constructor with parameters
     ~BigInteger(); //Deconstructor
-    
     
     //Member functions//
     //Every Function will have the same format
@@ -55,14 +54,17 @@ public:
     //<Return type> <name>(<parameters, ...nth>){}  // Every function Implementation
     void print();
     int getDigit(int index);
+
     string add(string number);
     string subtract(string number);
     string multiply(string number);
     string divide(string number);
     void increment();
+    void decrement();
     vector <int> reverseVector(vector<int> digits);
-    
+
     //Setters//
+    void setDigitsValue(string number); //TODO
     
     //Getters//
     long getSize();

@@ -10,5 +10,33 @@
 #define __SueHW3__Digit__
 
 #include <stdio.h>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <stdlib.h>
+#include <sstream>
+
+using namespace std;
+
+class Digit{
+    
+private:
+    
+    int value;
+public:
+    Digit();
+    Digit(int digit);
+    ~Digit();
+    
+    //Member Functions
+    void print();
+    
+    //Setters//
+    void setValue(int v);
+    
+    //Getters//
+    int getValue();
+    
+};
 
 #endif /* defined(__SueHW3__Digit__) */
