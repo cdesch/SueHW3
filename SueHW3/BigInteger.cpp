@@ -28,7 +28,6 @@ BigInteger::~BigInteger(){
     }
 }
 
-
 //Description: This converts a string into a vector. It converts all chars to integers in the process.
 vector <int> BigInteger::convertStringToVector(string ns){
     vector <int> myVector;
@@ -183,7 +182,9 @@ string BigInteger::add(string number){
 }
 
 
-//void BigInteger::add(BigInteger* number){}
+void BigInteger::add(BigInteger* number){
+
+}
 
 //Subtract two numbers
 string BigInteger::subtract(string number){
@@ -224,7 +225,8 @@ string BigInteger::subtract(string number){
 
 
 
-//void BigInteger::subtract(BigInteger* number){}
+void BigInteger::subtract(BigInteger* number){
+}
 
 //TMultiplying two numbers and returning the resultant vector to a string
 string BigInteger::multiply(string number){
@@ -279,7 +281,9 @@ string BigInteger::multiply(string number){
 
 
 
-//void BigInteger::multiply(BigInteger* number){}
+void BigInteger::multiply(BigInteger* number){
+
+}
 
 //TODO: Description
 string BigInteger::divide(string number){
@@ -289,7 +293,7 @@ string BigInteger::divide(string number){
     return number;
 }
 
-//void BigInteger::divide(BigInteger* number){}
+void BigInteger::divide(BigInteger* number){}
 
 //Increment the number by 1
 void BigInteger:: increment(){

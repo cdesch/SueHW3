@@ -41,8 +41,11 @@ private:
     
     //Private Member Functions//
     vector <int> convertStringToVector(string ns);
+    //vector <Digit*> convertStringToVector2(string ns);
     string convertVectorToString(vector <int> myVector);
+    //string convertVectorToString(vector <Digit*> myVector);
     bool isGreaterThan(vector <int> numVector);
+    //bool isGreaterThan(vector <Digit*> numVector);
 
 public:
     
@@ -56,18 +59,18 @@ public:
     //<Return type> <name>(<parameters, ...nth>){}  // Every function Implementation
     void print();
     int getDigit(int index);
-
+    
     string add(string number);
-    //void add(BigInteger* number);
+    void add(BigInteger* number);
     
     string subtract(string number);
-    //void subtract(BigInteger* number);
+    void subtract(BigInteger* number);
     
     string multiply(string number);
-    //void multiply(BigInteger* number);
+    void multiply(BigInteger* number);
     
     string divide(string number);
-    //void divide(BigInteger* number);
+    void divide(BigInteger* number);
     
     void increment();
     void decrement();
