@@ -135,20 +135,23 @@ void testCaseFour(){
     //4.1 Multiply two numbers
     
     
-    multiplicationTestCase("213","123","26199");
-    multiplicationTestCase("123","5","615");
+    //multiplicationTestCase("213","123","26199");
+    //multiplicationTestCase("123","5","615");
     
     //4.2 Multiply two numbers that carry over
-    multiplicationTestCase("1678","1543","2589154");
+   // multiplicationTestCase("1678","1543","2589154");
     
     //4.3 Multiply two numbers of differing length
-    multiplicationTestCase("167832","1543","258964776");
+    //multiplicationTestCase("167832","1543","258964776");
     
     //4.4 Multiple two numbers of differeing lengths
     multiplicationTestCase("1678","154387","259061386");
     
+    multiplicationTestCase("154387","1678","259061386");
+    
+    
     //4.5 Mul;tiply two long numbers of differeing lengths
-    multiplicationTestCase("738492738409274019284726474038262019362543059573630183749505846264849374","9875037634645930237595736253009785730737","7292643584704313025038543959653364114801893959499874158576694228326563709541268635376325546944510755161827008638");
+    //multiplicationTestCase("738492738409274019284726474038262019362543059573630183749505846264849374","9875037634645930237595736253009785730737","7292643584704313025038543959653364114801893959499874158576694228326563709541268635376325546944510755161827008638");
     
 }
 
@@ -186,7 +189,7 @@ int main(int argc, const char * argv[])
     
     //testClassFunctions();
     //testCaseOne();
-    testCaseTwo();
+    //testCaseTwo();
     //testCaseThree();
     testCaseFour();
     

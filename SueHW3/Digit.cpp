@@ -27,7 +27,7 @@ Digit::~Digit(){
  * Description:	Prints the current value of digit
  */
 void Digit::print(){
-    std::cout << this->value << "\n";
+    std::cout << this->value ;//<< "\n";
 }
 
 //TODO: Description with pre/post conditions

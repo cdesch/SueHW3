@@ -301,8 +301,11 @@ void BigInteger::add(BigInteger* number){
         for(int i = int(myDigits.size()-1); i >= newIndex; i--){
             sumNum = numVector[i-newIndex]->getValue() + myDigits[i]->getValue() + carry;
             if(sumNum >= 10){
-                carry = (sumNum/10) % 10;
-                sumNum=sumNum-10;
+                //carry = (sumNum/10) % 10;
+                //sumNum=sumNum-10;
+                
+                carry = sumNum / 10;
+                sumNum = sumNum % 10;
             }
             else{
                 carry = 0;
@@ -472,6 +475,8 @@ void BigInteger::multiply(BigInteger* number){
         
         for(j = indexMyDigits; j>= 0; j--){
             int result = (numVector[i]->getValue() * myDigits[j]->getValue()) + carry;
+            
+            cout << "R: " << result << "Nv: " << numVector[i]->getValue() << " md: " << myDigits[j]->getValue() << " c: " << carry;
             if(result >= 10){
                 
                 //carry = (result/10) % 10;
@@ -481,35 +486,50 @@ void BigInteger::multiply(BigInteger* number){
             }else{
                 carry = 0;
             }
+
+            cout << " ::r:: " << result ;
+            
             Digit* myResult = new Digit(result);
             middleLine.insert(begin(middleLine),myResult);
+            cout << endl;
         }
+        cout << " Carry:" << carry ;
 
         if(carry != 0){
             Digit* myCarry = new Digit(carry);
             middleLine.insert(begin(middleLine),myCarry);
         }
         zeroIndex++;
+        cout << endl;
+        
+        
+        
+        for(int s = 0 ; s < middleLine.size(); s++) {
+            
+            middleLine[s]->print();
+        }
+        cout << endl;
 
         //Add it to
         BigInteger* myNewNum = new BigInteger(middleLine);
         middleStepNumbers.push_back(myNewNum);
         
     }
+    cout << endl;
     
-    /*
+    
     cout << "Debug:" << endl;
     for(int s = 0 ; s < middleStepNumbers.size(); s++) {
+        cout << "step: " << s << " num: ";
         middleStepNumbers[s]->print();
     }
     cout << endl;
-    */
+    
     
                                       
     //Add up middleNumbers
     BigInteger* result = new BigInteger("0");
     for(int i = 0; i< middleStepNumbers.size(); i++ ){
-        result
         result->add(middleStepNumbers[i]);
     }
     
