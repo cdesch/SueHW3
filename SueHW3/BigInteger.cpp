@@ -17,8 +17,11 @@ BigInteger::BigInteger(){
 
 //Constructor with parameters
 BigInteger::BigInteger(string ns){
-    myDigits = convertStringToVector2(ns);
-    //TODO: ->
+    this->myDigits = convertStringToVector2(ns);
+}
+
+BigInteger::BigInteger(vector<Digit*> digit){
+    this->myDigits = digit;
 }
 //Deconstructor
 BigInteger::~BigInteger(){
@@ -378,10 +381,9 @@ void BigInteger::subtract(BigInteger* number){
     
     //Remove Leading zeros
     this->myDigits = removeLeadingZeros(this->myDigits);
-    
-
 }
 
+/*
 // two numbers and returning the resultant vector to a string
 string BigInteger::multiply(string number){
     
@@ -390,7 +392,7 @@ string BigInteger::multiply(string number){
     int index, index2, maxindex, flag, carry, i, j, vecSum;
     flag = 0;
     carry = 0;
-    vecSum=0;
+    vecSum = 0;
     
     if(digits[0] < 0 || numVector[0] < 0) return "Error, negative number."; //Return error
     index = int(digits.size()-1);
@@ -436,12 +438,123 @@ string BigInteger::multiply(string number){
     return number;
 }
 
-
+*/
 
 void BigInteger::multiply(BigInteger* number){
+    
+    vector <Digit*> numVector = number->getVector();
+    
+    int indexMyDigits, indexNumVector, maxindex, flag, carry, i, j, vecSum;
+    flag = 0;
+    carry = 0;
+    vecSum = 0;
+    
+    if(myDigits[0]->getValue() < 0 || numVector[0]->getValue() < 0) {
+        cout<< "Error, negative number." << endl; //Return error
+        return;
+    }
+    
+    indexMyDigits = int(myDigits.size()-1);
+    indexNumVector = int(numVector.size()-1);
+    maxindex = abs(int(myDigits.size() - numVector.size()));
+    
 
+    vector <BigInteger*> middleStepNumbers;
+    
+    int zeroIndex = 0;
+    for(i = indexNumVector; i >= 0; i--){
+        vector<Digit*> middleLine;
+        
+        for(int z = 0; z <zeroIndex; z++){
+            Digit* myZeroDigit = new Digit(0);
+            middleLine.push_back(myZeroDigit);
+        }
+        
+        for(j = indexMyDigits; j>= 0; j--){
+            int result = (numVector[i]->getValue() * myDigits[j]->getValue()) + carry;
+            if(result >= 10){
+                
+                //carry = (result/10) % 10;
+                //result = result-10;
+                carry = result / 10;
+                result = result % 10;
+            }else{
+                carry = 0;
+            }
+            Digit* myResult = new Digit(result);
+            middleLine.insert(begin(middleLine),myResult);
+        }
+
+        if(carry != 0){
+            Digit* myCarry = new Digit(carry);
+            middleLine.insert(begin(middleLine),myCarry);
+        }
+        zeroIndex++;
+
+        //Add it to
+        BigInteger* myNewNum = new BigInteger(middleLine);
+        middleStepNumbers.push_back(myNewNum);
+        
+    }
+    
+    /*
+    cout << "Debug:" << endl;
+    for(int s = 0 ; s < middleStepNumbers.size(); s++) {
+        middleStepNumbers[s]->print();
+    }
+    cout << endl;
+    */
+    
+                                      
+    //Add up middleNumbers
+    BigInteger* result = new BigInteger("0");
+    for(int i = 0; i< middleStepNumbers.size(); i++ ){
+        result
+        result->add(middleStepNumbers[i]);
+    }
+    
+    
+    this->myDigits = result->getVector();
+    
+    
+
+ /*
+    if(flag == 0){
+        for(i = index2; i >=0;i--){
+            for(j= index; j>=0;j--){
+                cout << "digits[i] " << myDigits[i]->getValue() <<  "numVector[i] " << numVector[i]->getValue() <<endl;
+                digits[i] = int((myDigits[j]->getValue()*numVector[i]->getValue()) + carry);
+                
+                if(int(myDigits[i]->getValue()) >= 10){
+                    carry = int((myDigits[i]->getValue()/10)%10);
+                    myDigits[i]->setValue(= int(myDigits[i] - carry*10);
+                    vecSum = vecSum+myDigits[i];
+                }
+                
+                cout << i << " digits carry " << carry << endl;
+                carry = 0;
+            }
+        }
+        if(flag == 1){
+            for(i = index2; i >= maxindex;)
+                numVector[i] = myDigits[i-maxindex]*numVector[i] + carry;
+            cout << "numVector[i] " << numVector[i] << endl;
+            if(int(numVector[i]) >=10){
+                carry = int((numVector[i]/10)%10);
+                numVector[i] = int(numVector[i] - carry*10);
+            }
+            cout << i << " numVector carry " << carry << endl;
+            carry=0;
+            i = i - 1;
+        }
+    }
+    
+    if(flag == 0) number=convertVectorToString(digits);
+    if(flag == 1) number=convertVectorToString(numVector);
+    return number;
+  */
 }
-
+/*
 //TODO: Description
 string BigInteger::divide(string number){
     //convert the final vector to a string and return.
@@ -449,23 +562,23 @@ string BigInteger::divide(string number){
     //TODO: implement
     return number;
 }
+*/
+void BigInteger::divide(BigInteger* number){
 
-void BigInteger::divide(BigInteger* number){}
+}
 
 //Increment the number by 1
-//Fixme: add
 void BigInteger::increment(){
-//    string myNewNum = add("1");
-//    digits = convertStringToVector(myNewNum);
-    
+    BigInteger* tempBigInt = new BigInteger("1");
+    this->add(tempBigInt);
+    delete tempBigInt;
 }
 
 //decrement the number by 1
-//Fixme: subtract
 void BigInteger::decrement(){
-//    string myNewNum = subtract("1");
-//    digits = convertStringToVector(myNewNum);
-    
+    BigInteger* tempBigInt = new BigInteger("1");
+    this->subtract(tempBigInt);
+    delete tempBigInt;
 }
 
 //Getters
@@ -478,9 +591,7 @@ vector <Digit*> BigInteger::getVector(){
     return this->myDigits;
 }
 
-
 //Tests//
-
 void BigInteger::runTests(){
     cout << "Running Class Tests" << endl;
     testConvertVectorToString();

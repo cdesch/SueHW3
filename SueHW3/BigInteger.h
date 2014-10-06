@@ -52,6 +52,7 @@ public:
     
     BigInteger(); //Default Constructor
     BigInteger(string ns); //Constructor with parameters
+    BigInteger(vector<Digit*> digit);
     ~BigInteger(); //Deconstructor
     
     //Member functions//
@@ -63,14 +64,15 @@ public:
     
     //string add(string number);
     void add(BigInteger* number);
+    //void addEasy(BigInteger* number);
     
     //string subtract(string number);
     void subtract(BigInteger* number);
     
-    string multiply(string number);
+    ///string multiply(string number);
     void multiply(BigInteger* number);
     
-    string divide(string number);
+    //string divide(string number);
     void divide(BigInteger* number);
     
     void increment();

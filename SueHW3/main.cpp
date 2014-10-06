@@ -13,6 +13,21 @@
 #include "Digit.h"
 #include "Utility.hpp"
 
+
+//Given that
+//a = 738492738409274019284726474038262019362543059573630183749505846264849374
+//b = 9875037634645930237595736253009785730737
+
+//then
+
+//a + b = 738492738409274019284726474038271894400177705503867779485758856050580111
+
+//a - b = 738492738409274019284726474038252144324908413643392588013252836479118637
+
+//a * b = 7292643584704313025038543959653364114801893959499874158576694228326563709541268635376325546944510755161827008638
+//a / b = 74783789766868336391831073406854
+
+
 using namespace std;
 //Test 1:
 //Store a number in BigIntger Object via String and print it.
@@ -59,9 +74,6 @@ void multiplicationTestCase(string firstNum, string secondNum, string expectedRe
     BigInteger* firstBigNum = new BigInteger(firstNum);
     BigInteger* secondBigNum = new BigInteger(secondNum);
     firstBigNum->multiply(secondBigNum);
-    
-    
-    //string  myNum = myBigNum->add(secondNum);
     
     cout << "Actual Result: \t\t";
     firstBigNum->print();
@@ -121,6 +133,9 @@ void testCaseThree(){
 void testCaseFour(){
     
     //4.1 Multiply two numbers
+    
+    
+    multiplicationTestCase("213","123","26199");
     multiplicationTestCase("123","5","615");
     
     //4.2 Multiply two numbers that carry over
@@ -130,11 +145,10 @@ void testCaseFour(){
     multiplicationTestCase("167832","1543","258964776");
     
     //4.4 Multiple two numbers of differeing lengths
-    multiplicationTestCase("1678","154387","Error");
+    multiplicationTestCase("1678","154387","259061386");
     
     //4.5 Mul;tiply two long numbers of differeing lengths
-    
-    //multiplicationTestCase("738492738409274019284726474038262019362543059573630183749505846264849374","9875037634645930237595736253009785730737","7292643584704313025038543959653364114801893959499874158576694228326563709541268635376325546944510755161827008638");
+    multiplicationTestCase("738492738409274019284726474038262019362543059573630183749505846264849374","9875037634645930237595736253009785730737","7292643584704313025038543959653364114801893959499874158576694228326563709541268635376325546944510755161827008638");
     
 }
 
@@ -172,9 +186,9 @@ int main(int argc, const char * argv[])
     
     //testClassFunctions();
     //testCaseOne();
-    //testCaseTwo();
-    testCaseThree();
-    //testCaseFour();
+    testCaseTwo();
+    //testCaseThree();
+    testCaseFour();
     
     
     
