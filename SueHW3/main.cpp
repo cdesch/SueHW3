@@ -9,8 +9,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
-
 #include "BigInteger.h"
 #include "Digit.h"
 #include "Utility.hpp"
@@ -30,10 +28,13 @@ void additionTestCase(string firstNum, string secondNum, string expectedResult){
     cout << "Testing Addition: " << firstNum << " + " << secondNum << endl;
     cout << "Expected Result: \t" << expectedResult << endl;
     
-    BigInteger* myBigNum = new BigInteger(firstNum);
-    string  myNum = myBigNum->add(secondNum);
+    BigInteger* firstBigNum = new BigInteger(firstNum);
+    BigInteger* secondBigNum = new BigInteger(secondNum);
+    firstBigNum->add(secondBigNum);
     
-    cout << "Actual Result: \t\t" <<  myNum << endl <<endl;
+    cout << "Actual Result: \t\t";
+    firstBigNum->print();
+    cout << endl <<endl;
 }
 
 void subtractionTestCase(string firstNum, string secondNum, string expectedResult){
@@ -41,10 +42,13 @@ void subtractionTestCase(string firstNum, string secondNum, string expectedResul
     cout << "Testing Subtraction: " << firstNum << " - " << secondNum << endl;
     cout << "Expected Result: \t" << expectedResult << endl;
     
-    BigInteger* myBigNum = new BigInteger(firstNum);
-    string  myNum = myBigNum->subtract(secondNum);
+    BigInteger* firstBigNum = new BigInteger(firstNum);
+    BigInteger* secondBigNum = new BigInteger(secondNum);
+    firstBigNum->subtract(secondBigNum);
     
-    cout << "Actual Result: \t\t" <<  myNum << endl <<endl;
+    cout << "Actual Result: \t\t";
+    firstBigNum->print();
+    cout << endl <<endl;
 }
 
 void multiplicationTestCase(string firstNum, string secondNum, string expectedResult){
@@ -52,10 +56,16 @@ void multiplicationTestCase(string firstNum, string secondNum, string expectedRe
     cout << "Testing Multiplication: " << firstNum << " * " << secondNum << endl;
     cout << "Expected Result: \t" << expectedResult << endl;
     
-    BigInteger* myBigNum = new BigInteger(firstNum);
-    string  myNum = myBigNum->multiply(secondNum);
+    BigInteger* firstBigNum = new BigInteger(firstNum);
+    BigInteger* secondBigNum = new BigInteger(secondNum);
+    firstBigNum->multiply(secondBigNum);
     
-    cout << "Actual Result: \t\t" <<  myNum << endl <<endl;
+    
+    //string  myNum = myBigNum->add(secondNum);
+    
+    cout << "Actual Result: \t\t";
+    firstBigNum->print();
+    cout << endl <<endl;
 }
 
 
@@ -128,6 +138,29 @@ void testCaseFour(){
     
 }
 
+void testDigitsClass(){
+    
+    Digit* myDigitOne = new Digit(1);
+    Digit* myDigitTwo = new Digit(2);
+    Digit* myDigitThree = new Digit(3);
+    Digit* myDigitAnotherTwo = new Digit(2);
+    
+    if(myDigitOne->isLessThan(myDigitTwo)){
+        cout << myDigitOne->getValue()<<" is less than " << myDigitTwo->getValue() << endl;
+    }else{
+        cout << myDigitOne->getValue()<<" is not less than " << myDigitTwo->getValue() << endl;
+    }
+    
+    if(myDigitOne->isEqualTo(myDigitTwo)){
+        cout << myDigitOne->getValue() <<" is equal to " << myDigitTwo->getValue() << endl;
+    }else{
+        cout << myDigitOne->getValue() <<" is not equal to " << myDigitTwo->getValue() << endl;
+    }
+    
+    //TODO: Greater than test case
+    
+}
+
 void testClassFunctions(){
     BigInteger* myNum = new BigInteger("123");
     myNum->runTests();
@@ -141,7 +174,7 @@ int main(int argc, const char * argv[])
     //testCaseOne();
     //testCaseTwo();
     testCaseThree();
-    testCaseFour();
+    //testCaseFour();
     
     
     

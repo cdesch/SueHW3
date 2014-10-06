@@ -24,9 +24,9 @@ private:
     
     int value;
 public:
-    Digit();
-    Digit(int digit);
-    ~Digit();
+    Digit(); //Default Constructor
+    Digit(int aDigit); //Constructor with Param
+    ~Digit(); //Deconstructor
     
     //Member Functions
     void print();

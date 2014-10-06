@@ -9,11 +9,6 @@
 #include "Utility.hpp"
 
 namespace utility{
-    void function1()
-    {
-        //code
-    }
-    
     //Simple char to int converter via ASCII indexs
     int convertCharToInt(char c){
         int myTempInt = (int)c;

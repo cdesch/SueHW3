@@ -13,7 +13,6 @@
 #include <iostream>
 
 namespace utility{
-    void function1();
     int convertCharToInt(char c);
     char convertIntToChar(int i);
 }

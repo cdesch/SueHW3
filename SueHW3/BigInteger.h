@@ -41,11 +41,12 @@ private:
     
     //Private Member Functions//
     vector <int> convertStringToVector(string ns);
-    //vector <Digit*> convertStringToVector2(string ns);
+    vector <Digit*> convertStringToVector2(string ns);
     string convertVectorToString(vector <int> myVector);
-    //string convertVectorToString(vector <Digit*> myVector);
-    bool isGreaterThan(vector <int> numVector);
-    //bool isGreaterThan(vector <Digit*> numVector);
+    string convertVectorToString(vector <Digit*> myVector);
+    //bool isGreaterThan(vector <int> numVector);
+    bool isGreaterThan(vector <Digit*> numVector);
+    vector<Digit*> removeLeadingZeros(vector<Digit*> myDigitVector);
 
 public:
     
@@ -60,10 +61,10 @@ public:
     void print();
     int getDigit(int index);
     
-    string add(string number);
+    //string add(string number);
     void add(BigInteger* number);
     
-    string subtract(string number);
+    //string subtract(string number);
     void subtract(BigInteger* number);
     
     string multiply(string number);
@@ -74,13 +75,15 @@ public:
     
     void increment();
     void decrement();
-    vector <int> reverseVector(vector<int> digits);
+    //vector <int> reverseVector(vector<int> digits);
+    vector <Digit*> reverseVector(vector<Digit*> digits);
 
     //Setters//
     void setDigitsValue(string number); //TODO
     
     //Getters//
     long getSize();
+    vector <Digit*> getVector();
     
     //Tests//
     void runTests();
